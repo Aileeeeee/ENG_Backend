@@ -1,0 +1,52 @@
+"""
+Exercise 2: Grade Calculator
+Challenge:
+Build a program that calculates a student's final grade based on multiple test scores.
+Requirements:
+
+Ask the user for their name
+Get 5 test scores (0-100)
+Store the scores in a list
+Calculate the average
+Use if statements to assign a letter grade:
+
+A: 90-100
+B: 80-89
+C: 70-79
+D: 60-69
+F: Below 60
+
+
+Display the student's name, all scores, average, and letter grade
+
+Hints:
+
+Use a list to store scores
+Use sum(list) and len(list) to calculate average
+Use if/elif/else for letter grades
+
+Sample Output:
+Student Name: John Smith
+Test Scores: [85, 92, 78, 88, 95]
+Average: 87.6
+Letter Grade: B
+"""
+
+# define variables for user input
+student_name = input("Enter the student's name: ")
+test_scores = []
+
+# get 5 test scores from the user
+for  score in range(1,6):
+    score= float(input(f"Enter score {score} :"))
+    test_scores.append(score)
+                 
+# calculate student's average score
+average_score = sum(test_scores) / len(test_scores)
+
+# Determine letter grade based on average score
+"""A: 90-100
+B: 80-89
+C: 70-79
+D: 60-69
+F: Below 60"""
