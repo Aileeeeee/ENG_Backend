@@ -13,10 +13,6 @@ class Task:
         self.task_due_date = task_due_date
         self.task_status = task_status
     
-    def __str__(self):
-        # A user friendly message for the user
-        return f"{self.task_description} - {self.task_due_date} - {self.task_status}"
-    
     def to_dict(self):
         # Storing task details in a dictionary to represent a specific task
         task_dict = {"task_description":self.task_description,
@@ -115,10 +111,10 @@ while True:
                 print(f"{key}. {task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
                 found = True
 
-            if not found:
-                print("No pending tasks found.")
+        if not found:
+            print("No pending tasks found.")
 
-
+        found = False
         # Print all completed tasks
         print("Completed Tasks")
         for key, task in task_manager.tasks.items():
@@ -126,8 +122,8 @@ while True:
                 print(f"{key}. {task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
                 found = True
 
-            if not found:
-                print("No completed tasks found.")
+        if not found:
+            print("No completed tasks found.")
     
 
 
