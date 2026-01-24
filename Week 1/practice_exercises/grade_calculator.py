@@ -45,8 +45,25 @@ for  score in range(1,6):
 average_score = sum(test_scores) / len(test_scores)
 
 # Determine letter grade based on average score
-"""A: 90-100
-B: 80-89
-C: 70-79
-D: 60-69
-F: Below 60"""
+
+if 90 <= average_score <= 100:
+    letter_grade = "A"
+elif 80 <= average_score < 90:
+    letter_grade = "B"
+elif 70 <= average_score < 80:
+    letter_grade = "C"
+elif 60 <= average_score < 70:
+    letter_grade = "D"
+else:
+    letter_grade = "F"
+
+
+# Display student details
+print("\n\nStudent Name:", student_name)
+print("Test Scores:", test_scores)
+print("Average:", average_score)
+print("Letter Grade:", letter_grade)                                                     
+
+
+
+
