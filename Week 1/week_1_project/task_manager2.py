@@ -5,6 +5,8 @@
 ● Delete tasks ● Save tasks to a JSON file (persistence) 
 ● Load tasks when the program starts
 """
+# Import JSON library
+import json
 
 # Define Task class
 class Task:
@@ -26,6 +28,7 @@ class Task:
 class TaskManger:
     def __init__(self):
         self.tasks = {}
+        self.filename = "tasks.json"
 
     def add_task(self):
         task_id = len(self.tasks) + 1
@@ -56,11 +59,20 @@ class TaskManger:
         else:
             return  False
         
-    
-        
-            
+    def save_to_json(self):
+        with open(self.filename,"w") as file:
+            json.dump(self.tasks,file,indent=4)
+
+    def load_to_json(self):
+        try:
+            with open(self.filename,"r") as file:
+                loaded_tasks = json.load(file)
+                return {int(key): value for key,value in loaded_tasks.items()}
+        except FileNotFoundError:
+            return {}        
 
 task_manager = TaskManger()   
+task_manager.tasks = task_manager.load_to_json()
 
 while True:
 
@@ -78,6 +90,7 @@ while True:
         task_description = input("Enter task description (e.g Buy groceries): ").title()
         task_due_date = input("Enter task due date (DD-MM-YYYY): ")
         task_manager.add_task()
+        task_manager.save_to_json()
         print("Task added.")
 
     elif choice == "2":
@@ -87,6 +100,7 @@ while True:
         choice = int(input("Select option: "))
 
         if task_manager.delete_task(choice):
+            task_manager.save_to_json()
             print("Task deleted.")
         else:
             print("Invalid choice. Task not found in task manager!")
@@ -99,16 +113,17 @@ while True:
         choice = int(input("Pick a task to mark complete:"))        
         
         if task_manager.complete_task(choice):
+            task_manager.save_to_json()
             print("Task marked completed")
 
     elif choice == "4":
         found = False
 
         # Print all pending tasks
-        print("Pending Tasks")
+        print("\nPending Tasks")
         for key, task in task_manager.tasks.items():
             if task["task_status"] == "Pending":
-                print(f"{key}. {task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
+                print(f"{task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
                 found = True
 
         if not found:
@@ -116,10 +131,10 @@ while True:
 
         found = False
         # Print all completed tasks
-        print("Completed Tasks")
-        for key, task in task_manager.tasks.items():
+        print("\nCompleted Tasks")
+        for key, task in enumerate(task_manager.tasks.values(), start=1):
             if task["task_status"] == "Completed":
-                print(f"{key}. {task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
+                print(f"{task["task_description"]} - {task["task_due_date"]} - {task["task_status"]}")
                 found = True
 
         if not found:
