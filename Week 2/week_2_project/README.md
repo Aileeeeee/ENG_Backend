@@ -40,58 +40,62 @@ GET /books
 
 
 **Response**
-```json
+``
 {
   "No_of_books_available": 10,
   "books": []
+<<<<<<< HEAD
 }
 
+=======
+}``
+>>>>>>> b3725cfadebe0ef9746c72da900bb75ce33d9c07
 ### Get a specific book
 GET /books/<book_id>
 
 **Response**
-{
+``{
   "book_id": 1,
   "title": "Atomic Habits",
   "author": "James Clear",
   "ISBN": "978-0-7352-1129-2",
   "year": 2018
-}
+}``
 
 ### Add a new book
 POST /books
 
 **Request Body**
-{
+``{
   "title": "Book Title",
   "author": "Author Name",
   "ISBN": "123-456789",
   "year": 2024
-}
+}``
 **Response**
-
+``
 {
   "message": "Book created successfully."
-}
+}``
 
 ### Update a book
 PUT /books/<book_id>
 
 **Request Body**
-{
+``{
   "title": "Updated Title",
   "author": "Updated Author",
   "ISBN": "987-654321",
   "year": 2023
-}
+}``
 
 ### Delete a book
 DELETE /books/<book_id>
 
 **Response**
-{
+``{
   "message": "Book deleted successfully"
-}
+}``
 
 ## How to Run the Project
 
