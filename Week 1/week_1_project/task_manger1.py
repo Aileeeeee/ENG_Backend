@@ -118,6 +118,7 @@ while True:
                     if not found:
                         print("No pending tasks.")
 
+                found = False
                 print("\nCompleted Tasks: ")
                 if show_tasks(tasks):
                     for key, task in tasks.items():
