@@ -44,12 +44,8 @@ GET /books
 {
   "No_of_books_available": 10,
   "books": []
-<<<<<<< HEAD
 }
 
-=======
-}``
->>>>>>> b3725cfadebe0ef9746c72da900bb75ce33d9c07
 ### Get a specific book
 GET /books/<book_id>
 
