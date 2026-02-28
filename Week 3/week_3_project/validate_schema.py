@@ -1,8 +1,7 @@
 # Import libraries
-from marshmallow import Schema, fields, validate,validates, ValidationError
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
 from models import BookModel
-from models import db
+from extensions import db
 
 
 

@@ -4,7 +4,7 @@ from extensions import db
 from models import BookModel
 from validate_schema import Bookschema
 
-# Initialize Flask application and Database
+# Initialize Flask application 
 book_lib = Flask(__name__)
 book_lib.json_sort_keys = False
 
